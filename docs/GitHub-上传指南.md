@@ -15,10 +15,12 @@
 | `.gitattributes` | ✅ 已添加：统一 LF 行尾 + 二进制资源标记（消除 Windows CRLF 噪音） |
 | `.env.example` | ✅ 已添加：环境变量模板（`.env` 本身被忽略） |
 | `README.md` | ✅ 已重写为完整项目说明（模板 boilerplate 已清除） |
-| 本地 Git 仓库 | ✅ 已 `git init -b main`，文件已 `git add` 暂存（**尚未 commit**） |
-| 忽略规则验证 | ✅ 实测通过：暂存区 56 个文件，无 `node_modules` / `dist` / 真实 `.env` / 密钥 |
+| 本地 Git 仓库 | ✅ 已 `git init -b main` |
+| 分批提交 | ✅ 已按 5 批完成，工作区干净（`git status -sb` → `## main`） |
+| 忽略规则验证 | ✅ 实测通过：仓库内 57 个文件，无 `node_modules` / `dist` / 真实 `.env` / 密钥 |
+| 提交历史 | ✅ 5 条 Conventional Commits，可 `git log --oneline` 验证 |
 
-**还需你完成**：创建远程仓库 → 关联 → 提交 → 推送。
+**还需你完成**：创建远程仓库 → 关联 → 推送（第 4、5 节）。
 
 ---
 
@@ -109,11 +111,17 @@ curl -L https://www.apache.org/licenses/LICENSE-2.0.txt -o LICENSE
 
 ### 3.1 建议的提交顺序
 
-先把已暂存的内容全部退回工作区，再按下面 5 批重新暂存：
+> ✅ **这 5 批提交已经执行完毕**，当前历史为：
+> ```
+> b098efe feat(views): 实现资料库、知识图谱、题库与星空成长等页面
+> 6ba365e feat(ui): 实现四套主题、双侧栏布局与选区阅读器
+> 5d2fd86 feat(core): 实现多通道模型网关、本地检索与三层记忆内核
+> 2f5cf50 docs: 补充项目说明、参赛指南与仓库规范
+> de6ac3b chore: 初始化 Vite + React 19 + TypeScript 工程脚手架
+> ```
+> 下面保留完整命令，**供你参考或在需要重新分批时复用**。
 
-```bash
-git reset            # 取消暂存，文件保留在工作区（不会删文件）
-```
+### 3.2 逐批提交命令（已完成；如需重来则整段复制）
 
 | 批次 | 范围 | 目录/文件 | commit message |
 |---|---|---|---|
@@ -123,7 +131,7 @@ git reset            # 取消暂存，文件保留在工作区（不会删文件
 | ④ 界面与主题 | UI 框架 | `src/App.tsx` `src/main.tsx` `src/index.css` `src/components/` `src/store/` `src/assets/` `public/` | `feat(ui): 实现四套主题、双侧栏布局与选区阅读器` |
 | ⑤ 功能视图 | 页面 | `src/views/` | `feat(views): 实现资料库、知识图谱、题库与星空成长等页面` |
 
-### 3.2 逐批提交命令（可直接整段复制）
+### 3.2 逐批提交命令（已完成；如需重来则整段复制）
 
 ```bash
 cd "D:/WorkBuddy工作/2026-10-28-14-21-38/studybuddy"
@@ -152,6 +160,7 @@ git commit -m "feat(views): 实现资料库、知识图谱、题库与星空成�
 ```
 
 **预期结果**：每条命令输出一段 `[main xxxxxxx] <message>` + `N files changed`。
+实际结果：11 / 7 / 12 / 18 / 9 个文件，合计 57 个。
 第 ② 批若没建 `LICENSE`，把它从命令里去掉即可。
 
 ### 3.3 校验提交历史
@@ -160,7 +169,7 @@ git commit -m "feat(views): 实现资料库、知识图谱、题库与星空成�
 git log --oneline --graph --stat | head -40
 ```
 
-**预期结果**：5 条提交，顺序与上表一致，每条都带对应的文件列表。
+**预期结果**：5 条提交，顺序与上表一致，每条都带对应的文件列表（实测 11/7/12/18/9 = 57 个文件）。
 
 > 💡 如果 `LICENSE` 不存在，`git add ... LICENSE` 会报 `pathspec 'LICENSE' did not match any files` —— 忽略该错误，其余照常。
 
