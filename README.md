@@ -131,6 +131,3 @@ npm start            # = npm run build && node server.js
   —— 本项目的三层可审计记忆、双循环推理、题库 / 错题 / 掌握路径、沉浸式阅读等设计均受其启发。
 - **[WorkBuddy Cloud SDK](https://www.npmjs.com/package/@tencent-ai/workbuddy-cloud-sdk)** —— 免密钥模型调用与账号体系。
 
-## 📄 License
-
-尚未指定开源许可证。公开仓库前请先添加 `LICENSE` 文件（MIT / Apache-2.0 等）。
