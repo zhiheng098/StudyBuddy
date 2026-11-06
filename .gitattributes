@@ -1,0 +1,35 @@
+# ============================================================
+#  StudyBuddy · 跨平台行尾与文件属性
+#  仓库内统一存 LF，避免 Windows / macOS / Linux 协作时整文件 diff
+# ============================================================
+
+# 默认：文本文件以 LF 存入仓库，检出时也用 LF
+* text=auto eol=lf
+
+# ---- 二进制资源，禁止行尾转换与 diff ----
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.mp3 binary
+*.mp4 binary
+*.wasm binary
+
+# ---- 锁文件保持原样，避免无意义的巨量 diff ----
+package-lock.json -diff linguist-generated=true
+
+# ---- 明确指定某些文件的语言归属，便于 GitHub 统计 ----
+*.ts linguist-language=TypeScript
+*.tsx linguist-language=TypeScript
+*.js linguist-language=JavaScript
+*.css linguist-language=CSS
+*.py linguist-language=Python
+*.md linguist-language=Markdown
